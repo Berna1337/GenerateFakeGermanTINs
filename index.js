@@ -1,3 +1,4 @@
+// array containing all the two digit german TIN region codes
 const regionCodes = [
 	"01",
 	"02",
@@ -100,8 +101,10 @@ const regionCodes = [
 	"99",
 ];
 
+// array where all the codes generated will be stored
 let germanFakeTINs = [];
 
+// function that generates a random TIN number but always using a random region code to keep the format correct
 function generateFakeTIN(a) {
 	let fakeTIN = a[Math.floor(Math.random() * a.length)];
 	while (fakeTIN.length < 11) {
@@ -110,6 +113,7 @@ function generateFakeTIN(a) {
 	return Number(fakeTIN);
 }
 
+// function used to generate multiple TINs and store them on the germanFakeTINs array
 function generateMultiple(n, f, a) {
 	for (let i = 0; i < n; i++) {
 		germanFakeTINs.push(f(a));
@@ -117,4 +121,5 @@ function generateMultiple(n, f, a) {
 	return germanFakeTINs;
 }
 
+// example generating 100 german fake TINs
 console.log(generateMultiple(100, generateFakeTIN, regionCodes));
